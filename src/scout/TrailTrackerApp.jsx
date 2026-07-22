@@ -16,6 +16,26 @@ const CHOICE_GROUP_LABEL = trailData.CHOICE_GROUP_LABEL;
 const RANKS = trailData.RANKS;
 const RANK_MB_REQUIREMENTS = trailData.RANK_MB_REQUIREMENTS;
 
+// Is this badge unlocked given what's already been completed?
+function isUnlocked(badge, doneIds) {
+  if (!badge.prereq) return true;
+  const { ids, mode } = badge.prereq;
+  return mode === "any" ? ids.some((id) => doneIds.has(id)) : ids.every((id) => doneIds.has(id));
+}
+
+// Human-readable "complete X first" text for a locked badge.
+function prereqText(badge, doneIds) {
+  if (!badge.prereq) return "";
+  const { ids, mode } = badge.prereq;
+  if (mode === "any") {
+    const names = ids.map((id) => BADGE_BY_ID[id]?.name || id);
+    return `Earn ${names.join(" or ")} first`;
+  }
+  const remainingIds = ids.filter((id) => !doneIds.has(id));
+  const names = remainingIds.map((id) => BADGE_BY_ID[id]?.name || id);
+  return `Earn ${names.join(" and ")} first`;
+}
+
 
 // Given a scout's current rank, what's the next badge-count milestone worth
 // showing? Ranks below Star have no badge requirement yet, so they all point
