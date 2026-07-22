@@ -2,8 +2,6 @@ import React, { useState } from "react";
 import {
   signInLeader,
   signUpLeader,
-  signInWithGoogle,
-  signInWithApple,
   requestPasswordReset,
 } from "../lib/dataClient.js";
 
@@ -11,7 +9,6 @@ const PINE_DARK = "#1D3223";
 const PINE = "#2D4A34";
 const GOLD = "#C99A2E";
 const PAPER = "#FFFDF7";
-const INK = "#2A2118";
 const FONT_DISPLAY = "'Arial Black', Impact, 'Helvetica Neue', sans-serif";
 const FONT_BODY = "'Segoe UI', -apple-system, Roboto, Helvetica, Arial, sans-serif";
 
@@ -29,6 +26,7 @@ export default function LeaderAuth({ onSignedIn, onBack }) {
   const [mode, setMode] = useState("signin"); // signin | signup | reset
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
   const [info, setInfo] = useState("");
   const [busy, setBusy] = useState(false);
@@ -36,12 +34,29 @@ export default function LeaderAuth({ onSignedIn, onBack }) {
   const handleSubmit = async () => {
     setError("");
     setInfo("");
+
+    if (mode === "signup") {
+      if (password.length < 6) {
+        setError("Password must be at least 6 characters.");
+        return;
+      }
+      if (password !== confirmPassword) {
+        setError("Passwords don't match.");
+        return;
+      }
+    }
+
     setBusy(true);
     try {
       if (mode === "signup") {
-        await signUpLeader(email, password);
-        setInfo("Check your email to confirm your account, then sign in.");
-        setMode("signin");
+        const data = await signUpLeader(email, password);
+        if (data.session) {
+          // Email confirmation is off, so signUp already logged us in.
+          onSignedIn();
+        } else {
+          setInfo("Check your email to confirm your account, then sign in.");
+          setMode("signin");
+        }
       } else if (mode === "reset") {
         await requestPasswordReset(email);
         setInfo("Password reset email sent.");
@@ -82,6 +97,13 @@ export default function LeaderAuth({ onSignedIn, onBack }) {
           </>
         )}
 
+        {mode === "signup" && (
+          <>
+            <label style={fieldLabel}>CONFIRM PASSWORD</label>
+            <input value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} type="password" style={fieldInput} />
+          </>
+        )}
+
         {error && <p style={{ fontSize: 12.5, color: "#a33", margin: "10px 0 0" }}>{error}</p>}
         {info && <p style={{ fontSize: 12.5, color: "#3F6B4A", margin: "10px 0 0" }}>{info}</p>}
 
@@ -90,21 +112,6 @@ export default function LeaderAuth({ onSignedIn, onBack }) {
             {mode === "signup" ? "Create account" : mode === "reset" ? "Send reset email" : "Sign in"}
           </button>
         </div>
-
-        {mode === "signin" && (
-          <>
-            <div style={{ display: "flex", gap: 8, marginTop: 10 }}>
-              <button onClick={signInWithGoogle} style={{ ...btn("#fffef9", INK), border: "1.5px solid #e6ddc5" }}>
-                Continue with Google
-              </button>
-            </div>
-            <div style={{ display: "flex", gap: 8, marginTop: 8 }}>
-              <button onClick={signInWithApple} style={{ ...btn("#fffef9", INK), border: "1.5px solid #e6ddc5" }}>
-                Continue with Apple
-              </button>
-            </div>
-          </>
-        )}
 
         <div style={{ display: "flex", justifyContent: "space-between", marginTop: 16, fontSize: 12.5 }}>
           <button onClick={onBack} style={{ background: "none", border: "none", color: "#8a7c60", cursor: "pointer" }}>
