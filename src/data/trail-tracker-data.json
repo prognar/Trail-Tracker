@@ -1,0 +1,1506 @@
+{
+  "CATS": {
+    "camp": {
+      "label": "Outdoors & Camping",
+      "icon": "⛺",
+      "color": "#3F6B4A"
+    },
+    "water": {
+      "label": "Water & Boating",
+      "icon": "🛶",
+      "color": "#2E6E7E"
+    },
+    "nature": {
+      "label": "Nature & Conservation",
+      "icon": "🌲",
+      "color": "#4C7A34"
+    },
+    "citizen": {
+      "label": "Citizenship",
+      "icon": "🏛️",
+      "color": "#8A5A2B"
+    },
+    "life": {
+      "label": "Life Skills",
+      "icon": "🧭",
+      "color": "#B0791E"
+    },
+    "stem": {
+      "label": "STEM",
+      "icon": "🔬",
+      "color": "#3B5D8A"
+    },
+    "craft": {
+      "label": "Trade & Craft",
+      "icon": "🔨",
+      "color": "#6B4A2B"
+    },
+    "art": {
+      "label": "Arts & Hobbies",
+      "icon": "🎨",
+      "color": "#8A3B5D"
+    },
+    "sport": {
+      "label": "Sports & Fitness",
+      "icon": "🏅",
+      "color": "#B0451E"
+    },
+    "animal": {
+      "label": "Animals",
+      "icon": "🐾",
+      "color": "#5D7A2B"
+    }
+  },
+  "RANKS": [
+    {
+      "id": "scout",
+      "name": "Scout"
+    },
+    {
+      "id": "tenderfoot",
+      "name": "Tenderfoot"
+    },
+    {
+      "id": "second",
+      "name": "Second Class"
+    },
+    {
+      "id": "first",
+      "name": "First Class"
+    },
+    {
+      "id": "star",
+      "name": "Star"
+    },
+    {
+      "id": "life",
+      "name": "Life"
+    },
+    {
+      "id": "eagle",
+      "name": "Eagle"
+    }
+  ],
+  "RANK_MB_REQUIREMENTS": {
+    "star": {
+      "name": "Star",
+      "total": 6,
+      "eagleRequired": 4
+    },
+    "life": {
+      "name": "Life",
+      "total": 11,
+      "eagleRequired": 6
+    },
+    "eagle": {
+      "name": "Eagle",
+      "total": 21,
+      "eagleRequired": 13
+    }
+  },
+  "CHOICE_GROUP_LABEL": {
+    "choice-A": "Emergency Prep OR Lifesaving",
+    "choice-B": "Environmental Science OR Sustainability",
+    "choice-C": "Swimming OR Hiking OR Cycling"
+  },
+  "BADGES": [
+    {
+      "id": "camping",
+      "name": "Camping",
+      "cat": "camp",
+      "eagle": "req",
+      "blurb": "Log nights under the stars — the heart of Scouting.",
+      "firstYear": true,
+      "prereq": null
+    },
+    {
+      "id": "citizenship-in-the-community",
+      "name": "Citizenship in the Community",
+      "cat": "citizen",
+      "eagle": "req",
+      "blurb": "How your town and neighbors work together.",
+      "firstYear": true,
+      "prereq": null
+    },
+    {
+      "id": "citizenship-in-the-nation",
+      "name": "Citizenship in the Nation",
+      "cat": "citizen",
+      "eagle": "req",
+      "blurb": "How the country's government and laws work.",
+      "firstYear": false,
+      "prereq": null
+    },
+    {
+      "id": "citizenship-in-the-world",
+      "name": "Citizenship in the World",
+      "cat": "citizen",
+      "eagle": "req",
+      "blurb": "How nations connect, trade, and cooperate.",
+      "firstYear": false,
+      "prereq": null
+    },
+    {
+      "id": "communication",
+      "name": "Communication",
+      "cat": "life",
+      "eagle": "req",
+      "blurb": "Writing, speaking, and listening with confidence.",
+      "firstYear": true,
+      "prereq": null
+    },
+    {
+      "id": "cooking",
+      "name": "Cooking",
+      "cat": "camp",
+      "eagle": "req",
+      "blurb": "Plan, shop for, and cook real meals, indoors and out.",
+      "firstYear": true,
+      "prereq": null
+    },
+    {
+      "id": "family-life",
+      "name": "Family Life",
+      "cat": "life",
+      "eagle": "req",
+      "blurb": "Chores, budgeting, and being a good family member.",
+      "firstYear": true,
+      "prereq": null
+    },
+    {
+      "id": "first-aid",
+      "name": "First Aid",
+      "cat": "life",
+      "eagle": "req",
+      "blurb": "Handle everyday injuries and emergencies calmly.",
+      "firstYear": true,
+      "prereq": null
+    },
+    {
+      "id": "personal-fitness",
+      "name": "Personal Fitness",
+      "cat": "sport",
+      "eagle": "req",
+      "blurb": "Build a fitness plan and stick with it.",
+      "firstYear": true,
+      "prereq": null
+    },
+    {
+      "id": "personal-management",
+      "name": "Personal Management",
+      "cat": "life",
+      "eagle": "req",
+      "blurb": "Budgeting, goal-setting, and planning ahead.",
+      "firstYear": false,
+      "prereq": null
+    },
+    {
+      "id": "emergency-preparedness",
+      "name": "Emergency Preparedness",
+      "cat": "life",
+      "eagle": "choice-A",
+      "blurb": "Get your family and home ready for disaster.",
+      "firstYear": false,
+      "prereq": null
+    },
+    {
+      "id": "lifesaving",
+      "name": "Lifesaving",
+      "cat": "water",
+      "eagle": "choice-A",
+      "blurb": "Water rescue skills beyond basic swimming.",
+      "firstYear": false,
+      "prereq": null
+    },
+    {
+      "id": "environmental-science",
+      "name": "Environmental Science",
+      "cat": "nature",
+      "eagle": "choice-B",
+      "blurb": "Field studies of ecosystems and pollution.",
+      "firstYear": false,
+      "prereq": null
+    },
+    {
+      "id": "sustainability",
+      "name": "Sustainability",
+      "cat": "nature",
+      "eagle": "choice-B",
+      "blurb": "Resource use and living within our means.",
+      "firstYear": false,
+      "prereq": null
+    },
+    {
+      "id": "swimming",
+      "name": "Swimming",
+      "cat": "water",
+      "eagle": "choice-C",
+      "blurb": "Strokes, endurance, and water safety.",
+      "firstYear": true,
+      "prereq": null
+    },
+    {
+      "id": "hiking",
+      "name": "Hiking",
+      "cat": "camp",
+      "eagle": "choice-C",
+      "blurb": "Log miles on the trail, including a long hike.",
+      "firstYear": true,
+      "prereq": null
+    },
+    {
+      "id": "cycling",
+      "name": "Cycling",
+      "cat": "sport",
+      "eagle": "choice-C",
+      "blurb": "Ride distance and learn bike maintenance.",
+      "firstYear": true,
+      "prereq": null
+    },
+    {
+      "id": "american-business",
+      "name": "American Business",
+      "cat": "citizen",
+      "eagle": null,
+      "blurb": "How companies are run and money is made.",
+      "firstYear": false,
+      "prereq": null
+    },
+    {
+      "id": "american-cultures",
+      "name": "American Cultures",
+      "cat": "citizen",
+      "eagle": null,
+      "blurb": "The many cultures that make up the U.S.",
+      "firstYear": false,
+      "prereq": null
+    },
+    {
+      "id": "american-heritage",
+      "name": "American Heritage",
+      "cat": "citizen",
+      "eagle": null,
+      "blurb": "Key people and moments in U.S. history.",
+      "firstYear": false,
+      "prereq": null
+    },
+    {
+      "id": "american-labor",
+      "name": "American Labor",
+      "cat": "citizen",
+      "eagle": null,
+      "blurb": "How the American workforce came to be.",
+      "firstYear": false,
+      "prereq": null
+    },
+    {
+      "id": "animal-science",
+      "name": "Animal Science",
+      "cat": "animal",
+      "eagle": null,
+      "blurb": "Livestock biology, care, and industry.",
+      "firstYear": false,
+      "prereq": null
+    },
+    {
+      "id": "animation",
+      "name": "Animation",
+      "cat": "art",
+      "eagle": null,
+      "blurb": "Bring drawings and models to life on screen.",
+      "firstYear": true,
+      "prereq": {
+        "ids": [
+          "art"
+        ],
+        "mode": "all"
+      }
+    },
+    {
+      "id": "archaeology",
+      "name": "Archaeology",
+      "cat": "stem",
+      "eagle": null,
+      "blurb": "Dig into the science of studying the past.",
+      "firstYear": true,
+      "prereq": null
+    },
+    {
+      "id": "archery",
+      "name": "Archery",
+      "cat": "sport",
+      "eagle": null,
+      "blurb": "Precision, patience, and bow safety.",
+      "firstYear": true,
+      "prereq": null
+    },
+    {
+      "id": "architecture",
+      "name": "Architecture",
+      "cat": "craft",
+      "eagle": null,
+      "blurb": "Design buildings and understand structures.",
+      "firstYear": false,
+      "prereq": null
+    },
+    {
+      "id": "art",
+      "name": "Art",
+      "cat": "art",
+      "eagle": null,
+      "blurb": "Drawing, painting, and visual composition.",
+      "firstYear": true,
+      "prereq": null
+    },
+    {
+      "id": "artificial-intelligence",
+      "name": "Artificial Intelligence",
+      "cat": "stem",
+      "eagle": null,
+      "blurb": "How AI works and its impact on society.",
+      "firstYear": true,
+      "prereq": null
+    },
+    {
+      "id": "astronomy",
+      "name": "Astronomy",
+      "cat": "stem",
+      "eagle": null,
+      "blurb": "Stars, planets, and telescopes under the night sky.",
+      "firstYear": true,
+      "prereq": null
+    },
+    {
+      "id": "athletics",
+      "name": "Athletics",
+      "cat": "sport",
+      "eagle": null,
+      "blurb": "Track-and-field style events and training.",
+      "firstYear": true,
+      "prereq": null
+    },
+    {
+      "id": "automotive-maintenance",
+      "name": "Automotive Maintenance",
+      "cat": "craft",
+      "eagle": null,
+      "blurb": "Basic car care and safe driving know-how.",
+      "firstYear": false,
+      "prereq": null
+    },
+    {
+      "id": "aviation",
+      "name": "Aviation",
+      "cat": "stem",
+      "eagle": null,
+      "blurb": "How airplanes fly and aviation careers.",
+      "firstYear": true,
+      "prereq": null
+    },
+    {
+      "id": "backpacking",
+      "name": "Backpacking",
+      "cat": "camp",
+      "eagle": null,
+      "blurb": "Multi-day trips carrying everything you need.",
+      "firstYear": false,
+      "prereq": {
+        "ids": [
+          "camping",
+          "hiking"
+        ],
+        "mode": "any"
+      }
+    },
+    {
+      "id": "basketry",
+      "name": "Basketry",
+      "cat": "craft",
+      "eagle": null,
+      "blurb": "Weave your own basket from start to finish.",
+      "firstYear": true,
+      "prereq": null
+    },
+    {
+      "id": "beekeeping",
+      "name": "Beekeeping",
+      "cat": "animal",
+      "eagle": null,
+      "blurb": "Hives, honey, and the importance of pollinators.",
+      "firstYear": false,
+      "prereq": null
+    },
+    {
+      "id": "bird-study",
+      "name": "Bird Study",
+      "cat": "nature",
+      "eagle": null,
+      "blurb": "Identify birds and understand their habits.",
+      "firstYear": true,
+      "prereq": null
+    },
+    {
+      "id": "bugling",
+      "name": "Bugling",
+      "cat": "art",
+      "eagle": null,
+      "blurb": "Learn the traditional camp bugle calls.",
+      "firstYear": false,
+      "prereq": null
+    },
+    {
+      "id": "canoeing",
+      "name": "Canoeing",
+      "cat": "water",
+      "eagle": null,
+      "blurb": "Paddle strokes, safety, and canoe trips.",
+      "firstYear": true,
+      "prereq": null
+    },
+    {
+      "id": "chemistry",
+      "name": "Chemistry",
+      "cat": "stem",
+      "eagle": null,
+      "blurb": "Reactions, elements, and chemistry in daily life.",
+      "firstYear": false,
+      "prereq": null
+    },
+    {
+      "id": "chess",
+      "name": "Chess",
+      "cat": "art",
+      "eagle": null,
+      "blurb": "Strategy, notation, and tournament play.",
+      "firstYear": true,
+      "prereq": null
+    },
+    {
+      "id": "cinematography",
+      "name": "Cinematography",
+      "cat": "art",
+      "eagle": null,
+      "blurb": "Shoot and edit a short film.",
+      "firstYear": true,
+      "prereq": null
+    },
+    {
+      "id": "citizenship-in-society",
+      "name": "Citizenship in Society",
+      "cat": "citizen",
+      "eagle": null,
+      "blurb": "Ethics, inclusion, and civil discourse (legacy badge).",
+      "firstYear": false,
+      "prereq": null
+    },
+    {
+      "id": "climbing",
+      "name": "Climbing",
+      "cat": "sport",
+      "eagle": null,
+      "blurb": "Knots, belaying, and rock climbing technique.",
+      "firstYear": false,
+      "prereq": null
+    },
+    {
+      "id": "coin-collecting",
+      "name": "Coin Collecting",
+      "cat": "art",
+      "eagle": null,
+      "blurb": "Numismatics — history in your pocket.",
+      "firstYear": true,
+      "prereq": null
+    },
+    {
+      "id": "collections",
+      "name": "Collections",
+      "cat": "art",
+      "eagle": null,
+      "blurb": "Turn any hobby collection into a badge.",
+      "firstYear": true,
+      "prereq": null
+    },
+    {
+      "id": "composite-materials",
+      "name": "Composite Materials",
+      "cat": "stem",
+      "eagle": null,
+      "blurb": "Modern materials like fiberglass and carbon fiber.",
+      "firstYear": false,
+      "prereq": null
+    },
+    {
+      "id": "crime-prevention",
+      "name": "Crime Prevention",
+      "cat": "citizen",
+      "eagle": null,
+      "blurb": "How communities work to reduce crime.",
+      "firstYear": false,
+      "prereq": null
+    },
+    {
+      "id": "cybersecurity",
+      "name": "Cybersecurity",
+      "cat": "stem",
+      "eagle": null,
+      "blurb": "Protecting data, devices, and networks online.",
+      "firstYear": true,
+      "prereq": {
+        "ids": [
+          "digital-technology"
+        ],
+        "mode": "all"
+      }
+    },
+    {
+      "id": "dentistry",
+      "name": "Dentistry",
+      "cat": "life",
+      "eagle": null,
+      "blurb": "Oral health and careers in dentistry.",
+      "firstYear": false,
+      "prereq": null
+    },
+    {
+      "id": "digital-technology",
+      "name": "Digital Technology",
+      "cat": "stem",
+      "eagle": null,
+      "blurb": "Computers, networks, and how software works.",
+      "firstYear": true,
+      "prereq": null
+    },
+    {
+      "id": "disabilities-awareness",
+      "name": "Disabilities Awareness",
+      "cat": "citizen",
+      "eagle": null,
+      "blurb": "Understanding and including people with disabilities.",
+      "firstYear": false,
+      "prereq": null
+    },
+    {
+      "id": "dog-care",
+      "name": "Dog Care",
+      "cat": "animal",
+      "eagle": null,
+      "blurb": "Feeding, training, and caring for a dog.",
+      "firstYear": true,
+      "prereq": null
+    },
+    {
+      "id": "drafting",
+      "name": "Drafting",
+      "cat": "craft",
+      "eagle": null,
+      "blurb": "Technical drawing and design plans.",
+      "firstYear": false,
+      "prereq": null
+    },
+    {
+      "id": "electricity",
+      "name": "Electricity",
+      "cat": "stem",
+      "eagle": null,
+      "blurb": "Circuits, wiring, and household electrical safety.",
+      "firstYear": false,
+      "prereq": null
+    },
+    {
+      "id": "electronics",
+      "name": "Electronics",
+      "cat": "stem",
+      "eagle": null,
+      "blurb": "Build and understand simple electronic circuits.",
+      "firstYear": false,
+      "prereq": null
+    },
+    {
+      "id": "energy",
+      "name": "Energy",
+      "cat": "stem",
+      "eagle": null,
+      "blurb": "Where power comes from and how it's used.",
+      "firstYear": false,
+      "prereq": null
+    },
+    {
+      "id": "engineering",
+      "name": "Engineering",
+      "cat": "stem",
+      "eagle": null,
+      "blurb": "The design process behind everyday inventions.",
+      "firstYear": false,
+      "prereq": null
+    },
+    {
+      "id": "entrepreneurship",
+      "name": "Entrepreneurship",
+      "cat": "citizen",
+      "eagle": null,
+      "blurb": "Start and pitch your own small business idea.",
+      "firstYear": false,
+      "prereq": null
+    },
+    {
+      "id": "exploration",
+      "name": "Exploration",
+      "cat": "camp",
+      "eagle": null,
+      "blurb": "Plan and carry out your own expedition.",
+      "firstYear": false,
+      "prereq": null
+    },
+    {
+      "id": "farm-mechanics",
+      "name": "Farm Mechanics",
+      "cat": "craft",
+      "eagle": null,
+      "blurb": "Tools and machines used on the farm.",
+      "firstYear": false,
+      "prereq": null
+    },
+    {
+      "id": "fingerprinting",
+      "name": "Fingerprinting",
+      "cat": "stem",
+      "eagle": null,
+      "blurb": "How fingerprints are used to identify people.",
+      "firstYear": true,
+      "prereq": null
+    },
+    {
+      "id": "fire-safety",
+      "name": "Fire Safety",
+      "cat": "life",
+      "eagle": null,
+      "blurb": "Prevent and respond to fires safely.",
+      "firstYear": true,
+      "prereq": null
+    },
+    {
+      "id": "fish-and-wildlife-management",
+      "name": "Fish and Wildlife Management",
+      "cat": "nature",
+      "eagle": null,
+      "blurb": "Managing habitats for healthy wildlife populations.",
+      "firstYear": false,
+      "prereq": null
+    },
+    {
+      "id": "fishing",
+      "name": "Fishing",
+      "cat": "water",
+      "eagle": null,
+      "blurb": "Tackle, technique, and landing your first catch.",
+      "firstYear": true,
+      "prereq": null
+    },
+    {
+      "id": "fly-fishing",
+      "name": "Fly Fishing",
+      "cat": "water",
+      "eagle": null,
+      "blurb": "Tie flies and cast for the sport of it.",
+      "firstYear": false,
+      "prereq": {
+        "ids": [
+          "fishing"
+        ],
+        "mode": "all"
+      }
+    },
+    {
+      "id": "forestry",
+      "name": "Forestry",
+      "cat": "nature",
+      "eagle": null,
+      "blurb": "Trees, forest health, and sustainable logging.",
+      "firstYear": false,
+      "prereq": null
+    },
+    {
+      "id": "game-design",
+      "name": "Game Design",
+      "cat": "stem",
+      "eagle": null,
+      "blurb": "Design and build your own playable game.",
+      "firstYear": true,
+      "prereq": null
+    },
+    {
+      "id": "gardening",
+      "name": "Gardening",
+      "cat": "nature",
+      "eagle": null,
+      "blurb": "Grow and tend your own plot of vegetables.",
+      "firstYear": true,
+      "prereq": null
+    },
+    {
+      "id": "genealogy",
+      "name": "Genealogy",
+      "cat": "citizen",
+      "eagle": null,
+      "blurb": "Trace your own family tree.",
+      "firstYear": true,
+      "prereq": null
+    },
+    {
+      "id": "geocaching",
+      "name": "Geocaching",
+      "cat": "camp",
+      "eagle": null,
+      "blurb": "GPS treasure hunting in the outdoors.",
+      "firstYear": true,
+      "prereq": null
+    },
+    {
+      "id": "geology",
+      "name": "Geology",
+      "cat": "stem",
+      "eagle": null,
+      "blurb": "Rocks, minerals, and how the earth changes.",
+      "firstYear": true,
+      "prereq": null
+    },
+    {
+      "id": "golf",
+      "name": "Golf",
+      "cat": "sport",
+      "eagle": null,
+      "blurb": "Rules, swing basics, and course etiquette.",
+      "firstYear": false,
+      "prereq": null
+    },
+    {
+      "id": "graphic-arts",
+      "name": "Graphic Arts",
+      "cat": "art",
+      "eagle": null,
+      "blurb": "Printing, layout, and visual design.",
+      "firstYear": false,
+      "prereq": null
+    },
+    {
+      "id": "healthcare-professions",
+      "name": "Healthcare Professions",
+      "cat": "life",
+      "eagle": null,
+      "blurb": "Explore careers in medicine and healthcare.",
+      "firstYear": false,
+      "prereq": null
+    },
+    {
+      "id": "home-repairs",
+      "name": "Home Repairs",
+      "cat": "craft",
+      "eagle": null,
+      "blurb": "Fix the everyday stuff around the house.",
+      "firstYear": true,
+      "prereq": null
+    },
+    {
+      "id": "horsemanship",
+      "name": "Horsemanship",
+      "cat": "animal",
+      "eagle": null,
+      "blurb": "Riding, care, and safety around horses.",
+      "firstYear": false,
+      "prereq": null
+    },
+    {
+      "id": "indian-lore",
+      "name": "Indian Lore",
+      "cat": "citizen",
+      "eagle": null,
+      "blurb": "American Indian cultures, crafts, and history.",
+      "firstYear": false,
+      "prereq": null
+    },
+    {
+      "id": "insect-study",
+      "name": "Insect Study",
+      "cat": "nature",
+      "eagle": null,
+      "blurb": "Collect, identify, and observe insects.",
+      "firstYear": true,
+      "prereq": null
+    },
+    {
+      "id": "inventing",
+      "name": "Inventing",
+      "cat": "stem",
+      "eagle": null,
+      "blurb": "Design a solution to a real problem.",
+      "firstYear": true,
+      "prereq": null
+    },
+    {
+      "id": "journalism",
+      "name": "Journalism",
+      "cat": "art",
+      "eagle": null,
+      "blurb": "Report and write a real news story.",
+      "firstYear": false,
+      "prereq": null
+    },
+    {
+      "id": "kayaking",
+      "name": "Kayaking",
+      "cat": "water",
+      "eagle": null,
+      "blurb": "Paddle strokes, rescues, and kayak trips.",
+      "firstYear": true,
+      "prereq": null
+    },
+    {
+      "id": "landscape-architecture",
+      "name": "Landscape Architecture",
+      "cat": "craft",
+      "eagle": null,
+      "blurb": "Design outdoor spaces people use.",
+      "firstYear": false,
+      "prereq": {
+        "ids": [
+          "architecture",
+          "gardening"
+        ],
+        "mode": "any"
+      }
+    },
+    {
+      "id": "law",
+      "name": "Law",
+      "cat": "citizen",
+      "eagle": null,
+      "blurb": "How laws are made and the legal system works.",
+      "firstYear": false,
+      "prereq": null
+    },
+    {
+      "id": "leatherwork",
+      "name": "Leatherwork",
+      "cat": "craft",
+      "eagle": null,
+      "blurb": "Tool and stitch your own leather project.",
+      "firstYear": true,
+      "prereq": null
+    },
+    {
+      "id": "mammal-study",
+      "name": "Mammal Study",
+      "cat": "nature",
+      "eagle": null,
+      "blurb": "Track, identify, and learn mammal behavior.",
+      "firstYear": true,
+      "prereq": null
+    },
+    {
+      "id": "medicine",
+      "name": "Medicine",
+      "cat": "life",
+      "eagle": null,
+      "blurb": "How doctors diagnose and treat illness.",
+      "firstYear": false,
+      "prereq": null
+    },
+    {
+      "id": "metalwork",
+      "name": "Metalwork",
+      "cat": "craft",
+      "eagle": null,
+      "blurb": "Shape and join metal safely.",
+      "firstYear": false,
+      "prereq": null
+    },
+    {
+      "id": "mining-in-society",
+      "name": "Mining in Society",
+      "cat": "stem",
+      "eagle": null,
+      "blurb": "How minerals are found, mined, and used.",
+      "firstYear": false,
+      "prereq": null
+    },
+    {
+      "id": "model-design-and-building",
+      "name": "Model Design and Building",
+      "cat": "craft",
+      "eagle": null,
+      "blurb": "Design and build a scale model.",
+      "firstYear": true,
+      "prereq": null
+    },
+    {
+      "id": "motorboating",
+      "name": "Motorboating",
+      "cat": "water",
+      "eagle": null,
+      "blurb": "Operate and maintain a motorboat safely.",
+      "firstYear": false,
+      "prereq": {
+        "ids": [
+          "swimming"
+        ],
+        "mode": "all"
+      }
+    },
+    {
+      "id": "moviemaking",
+      "name": "Moviemaking",
+      "cat": "art",
+      "eagle": null,
+      "blurb": "Write, shoot, and edit your own short film.",
+      "firstYear": true,
+      "prereq": null
+    },
+    {
+      "id": "music",
+      "name": "Music",
+      "cat": "art",
+      "eagle": null,
+      "blurb": "Performance, theory, or composing your own piece.",
+      "firstYear": true,
+      "prereq": null
+    },
+    {
+      "id": "nature",
+      "name": "Nature",
+      "cat": "nature",
+      "eagle": null,
+      "blurb": "A broad first look at the natural world.",
+      "firstYear": true,
+      "prereq": null
+    },
+    {
+      "id": "nuclear-science",
+      "name": "Nuclear Science",
+      "cat": "stem",
+      "eagle": null,
+      "blurb": "Atoms, radiation, and nuclear power.",
+      "firstYear": false,
+      "prereq": {
+        "ids": [
+          "chemistry"
+        ],
+        "mode": "all"
+      }
+    },
+    {
+      "id": "oceanography",
+      "name": "Oceanography",
+      "cat": "stem",
+      "eagle": null,
+      "blurb": "Currents, tides, and ocean ecosystems.",
+      "firstYear": false,
+      "prereq": {
+        "ids": [
+          "environmental-science",
+          "swimming"
+        ],
+        "mode": "any"
+      }
+    },
+    {
+      "id": "orienteering",
+      "name": "Orienteering",
+      "cat": "camp",
+      "eagle": null,
+      "blurb": "Map and compass navigation courses.",
+      "firstYear": true,
+      "prereq": null
+    },
+    {
+      "id": "painting",
+      "name": "Painting",
+      "cat": "art",
+      "eagle": null,
+      "blurb": "Techniques and styles across paint media.",
+      "firstYear": true,
+      "prereq": null
+    },
+    {
+      "id": "pets",
+      "name": "Pets",
+      "cat": "animal",
+      "eagle": null,
+      "blurb": "Responsible pet ownership basics.",
+      "firstYear": true,
+      "prereq": null
+    },
+    {
+      "id": "photography",
+      "name": "Photography",
+      "cat": "art",
+      "eagle": null,
+      "blurb": "Camera basics and composing a good shot.",
+      "firstYear": true,
+      "prereq": null
+    },
+    {
+      "id": "pioneering",
+      "name": "Pioneering",
+      "cat": "craft",
+      "eagle": null,
+      "blurb": "Lashings and rope structures, camp-engineering style.",
+      "firstYear": false,
+      "prereq": null
+    },
+    {
+      "id": "plant-science",
+      "name": "Plant Science",
+      "cat": "nature",
+      "eagle": null,
+      "blurb": "How plants grow and are used by people.",
+      "firstYear": false,
+      "prereq": null
+    },
+    {
+      "id": "plumbing",
+      "name": "Plumbing",
+      "cat": "craft",
+      "eagle": null,
+      "blurb": "Pipes, fixtures, and basic home plumbing.",
+      "firstYear": false,
+      "prereq": null
+    },
+    {
+      "id": "pottery",
+      "name": "Pottery",
+      "cat": "art",
+      "eagle": null,
+      "blurb": "Shape and fire your own clay pieces.",
+      "firstYear": true,
+      "prereq": null
+    },
+    {
+      "id": "programming",
+      "name": "Programming",
+      "cat": "stem",
+      "eagle": null,
+      "blurb": "Write real code to solve a problem.",
+      "firstYear": true,
+      "prereq": null
+    },
+    {
+      "id": "public-health",
+      "name": "Public Health",
+      "cat": "life",
+      "eagle": null,
+      "blurb": "How communities stay healthy together.",
+      "firstYear": false,
+      "prereq": null
+    },
+    {
+      "id": "public-speaking",
+      "name": "Public Speaking",
+      "cat": "life",
+      "eagle": null,
+      "blurb": "Prepare and deliver a confident speech.",
+      "firstYear": false,
+      "prereq": null
+    },
+    {
+      "id": "pulp-and-paper",
+      "name": "Pulp and Paper",
+      "cat": "craft",
+      "eagle": null,
+      "blurb": "How paper is made from raw material to product.",
+      "firstYear": false,
+      "prereq": null
+    },
+    {
+      "id": "radio",
+      "name": "Radio",
+      "cat": "stem",
+      "eagle": null,
+      "blurb": "Broadcasting and amateur (ham) radio basics.",
+      "firstYear": true,
+      "prereq": null
+    },
+    {
+      "id": "railroading",
+      "name": "Railroading",
+      "cat": "stem",
+      "eagle": null,
+      "blurb": "How trains and rail systems operate.",
+      "firstYear": false,
+      "prereq": null
+    },
+    {
+      "id": "reading",
+      "name": "Reading",
+      "cat": "life",
+      "eagle": null,
+      "blurb": "Explore books and build a reading habit.",
+      "firstYear": true,
+      "prereq": null
+    },
+    {
+      "id": "reptile-and-amphibian-study",
+      "name": "Reptile and Amphibian Study",
+      "cat": "nature",
+      "eagle": null,
+      "blurb": "Identify and understand cold-blooded critters.",
+      "firstYear": true,
+      "prereq": null
+    },
+    {
+      "id": "rifle-shooting",
+      "name": "Rifle Shooting",
+      "cat": "sport",
+      "eagle": null,
+      "blurb": "Marksmanship fundamentals and range safety.",
+      "firstYear": false,
+      "prereq": null
+    },
+    {
+      "id": "robotics",
+      "name": "Robotics",
+      "cat": "stem",
+      "eagle": null,
+      "blurb": "Design, build, and program a robot.",
+      "firstYear": true,
+      "prereq": {
+        "ids": [
+          "programming",
+          "electronics"
+        ],
+        "mode": "any"
+      }
+    },
+    {
+      "id": "rowing",
+      "name": "Rowing",
+      "cat": "water",
+      "eagle": null,
+      "blurb": "Rowing technique and small-boat safety.",
+      "firstYear": false,
+      "prereq": {
+        "ids": [
+          "swimming"
+        ],
+        "mode": "all"
+      }
+    },
+    {
+      "id": "safety",
+      "name": "Safety",
+      "cat": "life",
+      "eagle": null,
+      "blurb": "Spot and prevent hazards at home and out.",
+      "firstYear": true,
+      "prereq": null
+    },
+    {
+      "id": "salesmanship",
+      "name": "Salesmanship",
+      "cat": "citizen",
+      "eagle": null,
+      "blurb": "Pitch, sell, and understand a real transaction.",
+      "firstYear": false,
+      "prereq": null
+    },
+    {
+      "id": "scholarship",
+      "name": "Scholarship",
+      "cat": "life",
+      "eagle": null,
+      "blurb": "Build strong study habits and love of learning.",
+      "firstYear": true,
+      "prereq": null
+    },
+    {
+      "id": "scouting-heritage",
+      "name": "Scouting Heritage",
+      "cat": "citizen",
+      "eagle": null,
+      "blurb": "The history of Scouting itself.",
+      "firstYear": true,
+      "prereq": null
+    },
+    {
+      "id": "scuba-diving",
+      "name": "Scuba Diving",
+      "cat": "water",
+      "eagle": null,
+      "blurb": "Open-water diving skills and safety.",
+      "firstYear": false,
+      "prereq": {
+        "ids": [
+          "swimming"
+        ],
+        "mode": "all"
+      }
+    },
+    {
+      "id": "sculpture",
+      "name": "Sculpture",
+      "cat": "art",
+      "eagle": null,
+      "blurb": "Shape a three-dimensional work of art.",
+      "firstYear": true,
+      "prereq": null
+    },
+    {
+      "id": "search-and-rescue",
+      "name": "Search and Rescue",
+      "cat": "life",
+      "eagle": null,
+      "blurb": "How real SAR teams find and help people.",
+      "firstYear": false,
+      "prereq": {
+        "ids": [
+          "first-aid",
+          "emergency-preparedness"
+        ],
+        "mode": "all"
+      }
+    },
+    {
+      "id": "sewing",
+      "name": "Sewing",
+      "cat": "craft",
+      "eagle": null,
+      "blurb": "Hand and machine stitching, mend and make.",
+      "firstYear": true,
+      "prereq": null
+    },
+    {
+      "id": "shotgun-shooting",
+      "name": "Shotgun Shooting",
+      "cat": "sport",
+      "eagle": null,
+      "blurb": "Shotgun safety and marksmanship.",
+      "firstYear": false,
+      "prereq": null
+    },
+    {
+      "id": "signs-signals-and-codes",
+      "name": "Signs, Signals, and Codes",
+      "cat": "stem",
+      "eagle": null,
+      "blurb": "Morse, semaphore, and other coded messages.",
+      "firstYear": true,
+      "prereq": null
+    },
+    {
+      "id": "skating",
+      "name": "Skating",
+      "cat": "sport",
+      "eagle": null,
+      "blurb": "Ice or wheeled skating skills and safety.",
+      "firstYear": true,
+      "prereq": null
+    },
+    {
+      "id": "small-boat-sailing",
+      "name": "Small-Boat Sailing",
+      "cat": "water",
+      "eagle": null,
+      "blurb": "Rig and sail a small boat.",
+      "firstYear": false,
+      "prereq": {
+        "ids": [
+          "swimming"
+        ],
+        "mode": "all"
+      }
+    },
+    {
+      "id": "snow-sports",
+      "name": "Snow Sports",
+      "cat": "sport",
+      "eagle": null,
+      "blurb": "Skiing or snowboarding fundamentals.",
+      "firstYear": false,
+      "prereq": null
+    },
+    {
+      "id": "soil-and-water-conservation",
+      "name": "Soil and Water Conservation",
+      "cat": "nature",
+      "eagle": null,
+      "blurb": "Protecting land and water resources.",
+      "firstYear": false,
+      "prereq": null
+    },
+    {
+      "id": "space-exploration",
+      "name": "Space Exploration",
+      "cat": "stem",
+      "eagle": null,
+      "blurb": "Rockets, satellites, and the space program.",
+      "firstYear": true,
+      "prereq": {
+        "ids": [
+          "astronomy"
+        ],
+        "mode": "all"
+      }
+    },
+    {
+      "id": "sports",
+      "name": "Sports",
+      "cat": "sport",
+      "eagle": null,
+      "blurb": "Rules, officiating, and playing team sports.",
+      "firstYear": true,
+      "prereq": null
+    },
+    {
+      "id": "stamp-collecting",
+      "name": "Stamp Collecting",
+      "cat": "art",
+      "eagle": null,
+      "blurb": "Philately — history and geography in stamps.",
+      "firstYear": true,
+      "prereq": null
+    },
+    {
+      "id": "surveying",
+      "name": "Surveying",
+      "cat": "stem",
+      "eagle": null,
+      "blurb": "Measure land the way real surveyors do.",
+      "firstYear": false,
+      "prereq": {
+        "ids": [
+          "orienteering"
+        ],
+        "mode": "all"
+      }
+    },
+    {
+      "id": "textile",
+      "name": "Textile",
+      "cat": "craft",
+      "eagle": null,
+      "blurb": "How fabric is made, from fiber to fabric.",
+      "firstYear": false,
+      "prereq": null
+    },
+    {
+      "id": "theater",
+      "name": "Theater",
+      "cat": "art",
+      "eagle": null,
+      "blurb": "Acting, staging, or working backstage.",
+      "firstYear": true,
+      "prereq": null
+    },
+    {
+      "id": "traffic-safety",
+      "name": "Traffic Safety",
+      "cat": "citizen",
+      "eagle": null,
+      "blurb": "Road safety for drivers, riders, and walkers.",
+      "firstYear": false,
+      "prereq": null
+    },
+    {
+      "id": "truck-transportation",
+      "name": "Truck Transportation",
+      "cat": "craft",
+      "eagle": null,
+      "blurb": "How goods move by truck across the country.",
+      "firstYear": false,
+      "prereq": null
+    },
+    {
+      "id": "veterinary-medicine",
+      "name": "Veterinary Medicine",
+      "cat": "animal",
+      "eagle": null,
+      "blurb": "Animal health and vet-career exploration.",
+      "firstYear": true,
+      "prereq": {
+        "ids": [
+          "animal-science",
+          "pets"
+        ],
+        "mode": "any"
+      }
+    },
+    {
+      "id": "water-sports",
+      "name": "Water Sports",
+      "cat": "water",
+      "eagle": null,
+      "blurb": "Water skiing, wakeboarding, and related skills.",
+      "firstYear": false,
+      "prereq": {
+        "ids": [
+          "swimming"
+        ],
+        "mode": "all"
+      }
+    },
+    {
+      "id": "weather",
+      "name": "Weather",
+      "cat": "stem",
+      "eagle": null,
+      "blurb": "Forecasting and understanding weather patterns.",
+      "firstYear": true,
+      "prereq": null
+    },
+    {
+      "id": "welding",
+      "name": "Welding",
+      "cat": "craft",
+      "eagle": null,
+      "blurb": "Join metal safely with heat.",
+      "firstYear": false,
+      "prereq": null
+    },
+    {
+      "id": "whitewater",
+      "name": "Whitewater",
+      "cat": "water",
+      "eagle": null,
+      "blurb": "Rapids, safety, and whitewater technique.",
+      "firstYear": false,
+      "prereq": {
+        "ids": [
+          "canoeing",
+          "kayaking"
+        ],
+        "mode": "any"
+      }
+    },
+    {
+      "id": "wilderness-survival",
+      "name": "Wilderness Survival",
+      "cat": "camp",
+      "eagle": null,
+      "blurb": "Build a shelter and survive a night out.",
+      "firstYear": true,
+      "prereq": {
+        "ids": [
+          "camping"
+        ],
+        "mode": "all"
+      }
+    },
+    {
+      "id": "wood-carving",
+      "name": "Wood Carving",
+      "cat": "craft",
+      "eagle": null,
+      "blurb": "Knife safety and carving your own project.",
+      "firstYear": true,
+      "prereq": null
+    },
+    {
+      "id": "woodwork",
+      "name": "Woodwork",
+      "cat": "craft",
+      "eagle": null,
+      "blurb": "Build a real project out of wood.",
+      "firstYear": true,
+      "prereq": null
+    }
+  ]
+}
