@@ -14,15 +14,8 @@ export async function signInLeader(email, password) {
   return data;
 }
 
-export async function signInWithGoogle() {
-  const { error } = await supabase.auth.signInWithOAuth({ provider: "google" });
-  if (error) throw error;
-}
-
-export async function signInWithApple() {
-  const { error } = await supabase.auth.signInWithOAuth({ provider: "apple" });
-  if (error) throw error;
-}
+// Google/Apple sign-in aren't wired up yet — add signInWithOAuth calls here
+// once those providers are configured in Supabase Auth settings.
 
 export async function requestPasswordReset(email) {
   const { error } = await supabase.auth.resetPasswordForEmail(email, {
