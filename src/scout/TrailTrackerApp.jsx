@@ -116,6 +116,7 @@ export default function ScoutApp({ profile, onUpdateProfile, onSetBadgeStatus, o
           onUpdateProfile(fields);
           setShowOnboarding(false);
         }}
+        onCancel={profile.rank ? () => setShowOnboarding(false) : null}
       />
     );
   }
@@ -153,7 +154,7 @@ const styles = {
 };
 
 /* ---------------- Onboarding: troop info + rank + interests ---------------- */
-function Onboarding({ profile, onComplete }) {
+function Onboarding({ profile, onComplete, onCancel }) {
   const [step, setStep] = useState(0);
   const [rank, setRank] = useState(profile.rank || "scout");
   const [interests, setInterests] = useState(profile.interests || []);
@@ -174,7 +175,14 @@ function Onboarding({ profile, onComplete }) {
       <div style={{
         width: "100%", maxWidth: 440, background: PAPER, borderRadius: 18,
         padding: "28px 24px", boxShadow: "0 20px 60px rgba(0,0,0,0.45)", border: `3px solid ${GOLD}`,
+        position: "relative",
       }}>
+        {onCancel && (
+          <button onClick={onCancel} style={{
+            position: "absolute", top: 14, right: 16, background: "none", border: "none",
+            color: "#8a7c60", fontSize: 13, fontWeight: 700, cursor: "pointer",
+          }}>✕ Cancel</button>
+        )}
         <div style={{ display: "flex", gap: 6, marginBottom: 18 }}>
           <div style={{ flex: 1, height: 5, borderRadius: 3, background: step >= 0 ? GOLD : "#eee3c8" }} />
           <div style={{ flex: 1, height: 5, borderRadius: 3, background: step >= 1 ? GOLD : "#eee3c8" }} />
@@ -250,6 +258,7 @@ function btn(bg, color) {
 function Dashboard({ profile, setBadgeStatus, setBadgeField, onSwitch, onEditProfile, flashToast, toast }) {
   const [tab, setTab] = useState("home");
   const [catFilter, setCatFilter] = useState("all");
+  const [statusFilter, setStatusFilter] = useState("all"); // all | progress | done
   const [query, setQuery] = useState("");
   const [onlyFirstYear, setOnlyFirstYear] = useState(false);
   const [openBadge, setOpenBadge] = useState(null);
@@ -299,14 +308,18 @@ function Dashboard({ profile, setBadgeStatus, setBadgeField, onSwitch, onEditPro
         if (catFilter !== "all" && b.cat !== catFilter) return false;
         if (onlyFirstYear && !b.firstYear) return false;
         if (query && !b.name.toLowerCase().includes(query.toLowerCase())) return false;
+        if (statusFilter !== "all" && badgeState(b.id) !== statusFilter) return false;
         return true;
       })
       .sort((a, b) => {
+        const progressRank = (id) => (inProgressIds.has(id) ? 0 : 1);
+        const progressDiff = progressRank(a.id) - progressRank(b.id);
+        if (progressDiff !== 0) return progressDiff;
         const eagleDiff = (b.eagle ? 1 : 0) - (a.eagle ? 1 : 0);
         if (eagleDiff !== 0) return eagleDiff;
         return (isUnlocked(b, doneIds) ? 0 : 1) - (isUnlocked(a, doneIds) ? 0 : 1);
       });
-  }, [catFilter, onlyFirstYear, query, doneIds]);
+  }, [catFilter, onlyFirstYear, query, statusFilter, doneIds, inProgressIds, profile.badges]);
 
   // Required-list badges front and center — every one of these counts toward
   // Star, Life, and Eagle, so they're shown as a full set, not-yet-earned first.
@@ -354,7 +367,7 @@ function Dashboard({ profile, setBadgeStatus, setBadgeField, onSwitch, onEditPro
       <div style={{ maxWidth: 900, margin: "0 auto", padding: "0 16px" }}>
         <EncouragementBar quote={quote} xp={xp} />
 
-        <TabBar tab={tab} setTab={setTab} />
+        <TabBar tab={tab} setTab={(t) => { setStatusFilter("all"); setTab(t); }} />
 
         {tab === "home" && (
           <HomeTab
@@ -369,7 +382,7 @@ function Dashboard({ profile, setBadgeStatus, setBadgeField, onSwitch, onEditPro
             badgeState={badgeState}
             doneIds={doneIds}
             openBadge={setOpenBadge}
-            onGoto={() => setTab("badges")}
+            onGoto={(filter) => { setStatusFilter(filter || "all"); setTab("badges"); }}
           />
         )}
 
@@ -389,6 +402,7 @@ function Dashboard({ profile, setBadgeStatus, setBadgeField, onSwitch, onEditPro
           <BadgesTab
             query={query} setQuery={setQuery}
             catFilter={catFilter} setCatFilter={setCatFilter}
+            statusFilter={statusFilter} setStatusFilter={setStatusFilter}
             onlyFirstYear={onlyFirstYear} setOnlyFirstYear={setOnlyFirstYear}
             filtered={filtered}
             badgeState={badgeState}
@@ -500,8 +514,8 @@ function HomeTab({ rankInfo, totalDone, inProgressCount, milestone, requiredList
     <div>
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10, marginBottom: 20 }}>
         <StatCard label="Current Rank" value={rankInfo.name} sub="tap Edit to update" color={PINE} dark />
-        <StatCard label="Badges Earned" value={totalDone} sub="on your journey so far" color={PINE} />
-        <StatCard label="In Progress" value={inProgressCount} sub="keep going!" color="#3B5D8A" />
+        <StatCard label="Badges Earned" value={totalDone} sub="on your journey so far" color={PINE} onClick={() => onGoto("done")} />
+        <StatCard label="In Progress" value={inProgressCount} sub="keep going!" color="#3B5D8A" onClick={() => onGoto("progress")} />
         {milestone ? (
           <StatCard label={`Toward ${milestone.name}`} value={`${totalDone}/${milestone.total}`} sub={`${milestoneReqCapped}/${milestone.eagleRequired} required-list`} color={GOLD} />
         ) : (
@@ -556,7 +570,7 @@ function HomeTab({ rankInfo, totalDone, inProgressCount, milestone, requiredList
       </div>
 
       <div style={{ textAlign: "center" }}>
-        <button onClick={onGoto} style={{
+        <button onClick={() => onGoto()} style={{
           background: PINE_DARK, color: "#fff", border: "none", borderRadius: 999,
           padding: "10px 22px", fontWeight: 800, fontSize: 13.5, cursor: "pointer",
         }}>Browse all {BADGES.length} badges →</button>
@@ -565,12 +579,16 @@ function HomeTab({ rankInfo, totalDone, inProgressCount, milestone, requiredList
   );
 }
 
-function StatCard({ label, value, sub, color, dark }) {
+function StatCard({ label, value, sub, color, dark, onClick }) {
   return (
-    <div style={{
-      background: dark ? color : PAPER, color: dark ? "#fff" : INK, borderRadius: 14,
-      padding: "14px 16px", border: dark ? "none" : "1px solid #e6ddc5",
-    }}>
+    <div
+      onClick={onClick}
+      style={{
+        background: dark ? color : PAPER, color: dark ? "#fff" : INK, borderRadius: 14,
+        padding: "14px 16px", border: dark ? "none" : "1px solid #e6ddc5",
+        cursor: onClick ? "pointer" : "default",
+      }}
+    >
       <div style={{ fontSize: 26, fontFamily: FONT_DISPLAY, color: dark ? "#fff" : color }}>{value}</div>
       <div style={{ fontSize: 12.5, fontWeight: 800, marginTop: 2 }}>{label}</div>
       <div style={{ fontSize: 11, opacity: dark ? 0.85 : 0.6, marginTop: 1 }}>{sub}</div>
@@ -711,9 +729,21 @@ function ReqRow({ label, status, onClick, compact }) {
 }
 
 /* ---------------- Badges tab ---------------- */
-function BadgesTab({ query, setQuery, catFilter, setCatFilter, onlyFirstYear, setOnlyFirstYear, filtered, badgeState, doneIds, openBadge }) {
+function BadgesTab({ query, setQuery, catFilter, setCatFilter, statusFilter, setStatusFilter, onlyFirstYear, setOnlyFirstYear, filtered, badgeState, doneIds, openBadge }) {
   return (
     <div>
+      {statusFilter !== "all" && (
+        <div style={{
+          display: "flex", alignItems: "center", justifyContent: "space-between",
+          background: "#eaf1ea", border: `1.5px solid ${PINE}`, borderRadius: 10,
+          padding: "8px 12px", marginBottom: 10, fontSize: 12.5, fontWeight: 700, color: PINE_DARK,
+        }}>
+          <span>Showing: {statusFilter === "done" ? "Badges Earned" : "In Progress"}</span>
+          <button onClick={() => setStatusFilter("all")} style={{
+            background: "none", border: "none", color: PINE_DARK, fontWeight: 800, cursor: "pointer", fontSize: 12.5,
+          }}>✕ Clear</button>
+        </div>
+      )}
       <input
         value={query}
         onChange={(e) => setQuery(e.target.value)}
@@ -883,18 +913,35 @@ function BadgeModal({ badge, data, doneIds, onClose, onStatus, onField }) {
   const cat = CATS[badge.cat];
   const status = data?.status || "none";
   const locked = badge.prereq && doneIds && !isUnlocked(badge, doneIds) && status === "none";
+
+  // Buffered locally so typing never round-trips through the network before
+  // the input re-renders — that round trip was causing the cursor to jump.
+  const [counselor, setCounselor] = useState(data?.counselor || "");
+  const [notes, setNotes] = useState(data?.notes || "");
+
+  useEffect(() => {
+    setCounselor(data?.counselor || "");
+    setNotes(data?.notes || "");
+  }, [badge.id]);
+
+  const commitCounselor = () => { if (counselor !== (data?.counselor || "")) onField("counselor", counselor); };
+  const commitNotes = () => { if (notes !== (data?.notes || "")) onField("notes", notes); };
+
+  const handleClose = () => {
+    commitCounselor();
+    commitNotes();
+    onClose();
+  };
+
   return (
-    <div onClick={onClose} style={{
+    <div onClick={handleClose} style={{
       position: "fixed", inset: 0, background: "rgba(20,16,10,0.55)", display: "flex",
-      alignItems: "flex-end", justifyContent: "center", zIndex: 100,
+      alignItems: "center", justifyContent: "center", zIndex: 100, padding: 20,
     }}>
       <div onClick={(e) => e.stopPropagation()} style={{
-        background: PAPER, width: "100%", maxWidth: 480, borderRadius: "18px 18px 0 0",
-        padding: "20px 20px 26px", maxHeight: "88vh", overflowY: "auto",
+        background: PAPER, width: "100%", maxWidth: 480, borderRadius: 18,
+        padding: "22px 20px 26px", maxHeight: "88vh", overflowY: "auto",
       }}>
-        <div style={{ display: "flex", justifyContent: "center", marginBottom: 10 }}>
-          <div style={{ width: 40, height: 4, borderRadius: 2, background: "#e0d5b8" }} />
-        </div>
         <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 4 }}>
           <span style={{ fontSize: 28, filter: locked ? "grayscale(1)" : "none" }}>{cat.icon}</span>
           <div>
@@ -939,15 +986,17 @@ function BadgeModal({ badge, data, doneIds, onClose, onStatus, onField }) {
           <>
             <label style={fieldLabel}>MERIT BADGE COUNSELOR</label>
             <input
-              value={data?.counselor || ""}
-              onChange={(e) => onField("counselor", e.target.value)}
+              value={counselor}
+              onChange={(e) => setCounselor(e.target.value)}
+              onBlur={commitCounselor}
               placeholder="Name (optional)"
               style={fieldInput}
             />
             <label style={fieldLabel}>NOTES</label>
             <textarea
-              value={data?.notes || ""}
-              onChange={(e) => onField("notes", e.target.value)}
+              value={notes}
+              onChange={(e) => setNotes(e.target.value)}
+              onBlur={commitNotes}
               placeholder="Meeting dates, requirements left, worksheet links..."
               rows={3}
               style={{ ...fieldInput, resize: "vertical", fontFamily: FONT_BODY }}
@@ -961,7 +1010,7 @@ function BadgeModal({ badge, data, doneIds, onClose, onStatus, onField }) {
           counselor, and record official completion in Scoutbook.
         </p>
 
-        <button onClick={onClose} style={{
+        <button onClick={handleClose} style={{
           width: "100%", marginTop: 16, padding: "11px 0", borderRadius: 10, border: "none",
           background: PINE_DARK, color: "#fff", fontWeight: 800, fontSize: 14, cursor: "pointer",
         }}>Done</button>
